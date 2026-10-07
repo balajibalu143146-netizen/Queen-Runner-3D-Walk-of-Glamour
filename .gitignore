@@ -1,0 +1,77 @@
+# ==========================================
+# GitHub Official Template: Node + Web + OS
+# ==========================================
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Optional npm/yarn cache
+.npm
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+
+# Build and Production outputs
+dist/
+dist-ssr/
+build/
+out/
+.next/
+.nuxt/
+*.tsbuildinfo
+
+# Cache directories
+.cache/
+.parcel-cache/
+.snowpack/
+
+# Environment variable files (Secrets)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# IDE & Editor configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.sw?
+*.swo
+
+# Local Archives (prevent accidental upload of heavy archives)
+*.zip
+*.tar.gz
+*.rar
+*.7z
