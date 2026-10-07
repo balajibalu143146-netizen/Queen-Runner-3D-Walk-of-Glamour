@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2b0938">
+    <title>Queen Runner 3D: Walk of Glamour</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Babylon.js WebGL 3D Engine -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- 3D WebGL Canvas -->
+        <canvas id="renderCanvas"></canvas>
+
+        <!-- Dynamic Floating 3D Text Container -->
+        <div id="floatingContainer"></div>
+
+        <!-- HUD (Heads-Up Display) -->
+        <div id="hud">
+            <div class="hud-top-row">
+                <div class="hud-badge level-badge" id="levelBadge">LEVEL 1</div>
+                
+                <div class="hud-badge coin-badge">
+                    <span class="coin-icon">💰</span>
+                    <span id="coinCount">0</span>
+                </div>
+
+                <div class="hud-controls">
+                    <button class="hud-btn" id="btnAudio" title="Toggle Sound">🔊</button>
+                </div>
+            </div>
+
+            <!-- Glamour Progression Meter -->
+            <div class="glamour-card">
+                <div class="glamour-header">
+                    <div class="glamour-title">
+                        <span>✨ GLAMOUR:</span>
+                        <span class="glamour-tier-name" id="glamourLabel">CASUAL</span>
+                    </div>
+                    <div id="glamourPoints">35 PTS</div>
+                </div>
+                <div class="glamour-bar-bg">
+                    <div class="glamour-bar-fill" id="glamourFill"></div>
+                </div>
+            </div>
+
+            <!-- Mini Runway Progress Bar -->
+            <div class="runway-progress">
+                <div class="runway-progress-fill" id="progressBarFill"></div>
+            </div>
+        </div>
+
+        <!-- START SCREEN MODAL -->
+        <div class="screen-overlay" id="startScreen">
+            <div class="modal-card">
+                <div class="crown-hero">👑</div>
+                <h1 class="game-title">QUEEN RUN 3D</h1>
+                <div class="level-title-display" id="startLevelTitle">LEVEL 1: THE DEBUTANTE WALK</div>
+                <p class="level-desc-display" id="startLevelDesc">
+                    Pass through the fashion choice gates, collect spinning golden coins, and transform into a Majestic Queen!
+                </p>
+
+                <div class="swipe-guide">
+                    <span class="swipe-hand">👉</span>
+                    <span>Drag or Swipe to Strut</span>
+                    <span class="swipe-hand">👈</span>
+                </div>
+
+                <button class="btn-primary" id="btnPlay">STRUT &amp; PLAY</button>
+                <button class="btn-secondary" id="btnLevelSelect">Select Level 🏆</button>
+                <div class="controls-hint">Controls: Touch / Mouse Drag or [A] [D] / Arrow Keys</div>
+            </div>
+        </div>
+
+        <!-- VICTORY / CORONATION MODAL -->
+        <div class="screen-overlay" id="victoryModal" style="display: none;">
+            <div class="modal-card">
+                <div class="crown-hero">👑</div>
+                <h2 class="game-title" id="victoryTitle">MAJESTIC QUEEN!</h2>
+                <div class="star-rating" id="victoryStars">⭐⭐⭐</div>
+                <p class="level-desc-display" id="victorySubtitle">
+                    You dazzled the royal court with undeniable elegance!
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Final Glamour</div>
+                        <div class="stat-val" id="victoryGlamour">110 Pts</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Royal Payout</div>
+                        <div class="stat-val" id="victoryCoins">💰 45 x 3.0x</div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" id="btnNextLevel">NEXT LEVEL ➔</button>
+                <button class="btn-secondary" id="btnReplay">REPLAY RUN</button>
+            </div>
+        </div>
+
+        <!-- GAME OVER / WALK OF SHAME MODAL -->
+        <div class="screen-overlay" id="gameoverModal" style="display: none;">
+            <div class="modal-card">
+                <div class="crown-hero">🥀</div>
+                <h2 class="game-title" style="background: linear-gradient(135deg, #fff, #ef233c);">WALK OF SHAME</h2>
+                <p class="level-desc-display">
+                    Your glamour reached zero! Brush the mud off your heels and strut again!
+                </p>
+
+                <button class="btn-primary" id="btnRetry">TRY AGAIN</button>
+            </div>
+        </div>
+
+        <!-- LEVEL SELECT MODAL -->
+        <div class="screen-overlay" id="levelSelectModal" style="display: none;">
+            <div class="modal-card" style="max-width: 480px;">
+                <h2 class="game-title">SELECT LEVEL</h2>
+                <div class="level-grid" id="levelCardsContainer"></div>
+                <button class="btn-secondary" id="btnCloseLevelSelect" style="width: 100%;">BACK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Scripts -->
+    <script src="js/audio.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/environment.js"></script>
+    <script src="js/gates.js"></script>
+    <script src="js/collectibles.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
